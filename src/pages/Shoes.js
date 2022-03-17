@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "reactstrap";
 import data from "./../data/shoes.json";
+import { motion } from "framer-motion";
 
 const StyledShoes = styled.div`
   width: 100%;
@@ -31,11 +32,27 @@ const StyledShoes = styled.div`
     bottom: 2px;
   }
 `;
-
-const Jewelry = () => {
+const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+  },
+  out: {
+    opacity: 0,
+  }
+};
+const Shoes = () => {
   return (
-    <StyledShoes  className="bg">
-      <div className="product-cards">
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+    >
+      <StyledShoes className="bg">
+        <div className="product-cards">
           <Row>
             {data.map((data) => (
               <Col xl={4} lg={4} md={6} s={12} xs={12}>
@@ -53,8 +70,9 @@ const Jewelry = () => {
             ))}
           </Row>
         </div>
-    </StyledShoes>
+      </StyledShoes>
+    </motion.div>
   );
 };
 
-export default Jewelry;
+export default Shoes;

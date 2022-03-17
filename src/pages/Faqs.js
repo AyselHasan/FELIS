@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
 import { Collapse } from "antd";
-import { SettingOutlined } from "@ant-design/icons";
 import { GiDandelionFlower } from "react-icons/gi";
 import "./../assets/css/faqs/faqs.css";
 import faqs from "./../data/faqs.json";
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+  },
+  out: {
+    opacity: 0,
+  },
+};
 
 const { Panel } = Collapse;
 
@@ -23,7 +35,13 @@ class Faqs extends Component {
   render() {
     const { expandIconPosition } = this.state;
     return (
-      <section className="faqs font bg bold mt-5">
+      <motion.section
+        className="faqs font bg bold mt-5"
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+      >
         <div className="faqs-container">
           <h1 className="bold text-center">FREQUENTLY ASKED QUESTIONS</h1>
           <p className="regular text-center italic">
@@ -49,7 +67,7 @@ class Faqs extends Component {
             ))}
           </Collapse>
         </div>
-      </section>
+      </motion.section>
     );
   }
 }

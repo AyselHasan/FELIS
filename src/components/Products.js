@@ -36,6 +36,15 @@ const StyledFavorites = styled.div`
   }
 `;
 
+const links = [
+  { id: 1, path: "/jewelry", title: "JEWELRY" },
+  { id: 2, path: "/shoes", title: "SHOES" },
+  { id: 3, path: "/bags", title: "HANDBAGS" },
+  { id: 4, path: "/sweaters", title: "SWEATERS" },
+  { id: 5, path: "/eyewears", title: "EYEWEARS" },
+  { id: 6, path: "/shirts", title: "SHIRTS" },
+];
+
 const Favorites = () => {
   return (
     <StyledFavorites id="products">
@@ -49,24 +58,13 @@ const Favorites = () => {
           <Col xl={4} lg={4} md={12} s={12} xs={12}>
             <div className="card-container font text-card">
               <ul className="text-center list-unstyled">
-                <li>
-                  <Link className="link" to="/jewelry">JEWELRY</Link>
-                </li>
-                <li>
-                  <Link className="link" to="/shoes">SHOES</Link>
-                </li>
-                <li>
-                  <Link className="link" to="/handbags">HANDBAGS</Link>
-                </li>
-                <li>
-                  <Link className="link" to="/sweaters">SWEATERS</Link>
-                </li>
-                <li>
-                  <Link className="link" to="/eyewears">EYEWEAR</Link>
-                </li>
-                <li>
-                  <Link className="link" to="/shirts">SHIRTS</Link>
-                </li>
+                {links.map((link) => (
+                  <li key={link.id}>
+                    <Link className="link" to={link.path}>
+                      {link.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </Col>

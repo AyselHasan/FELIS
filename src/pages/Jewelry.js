@@ -2,6 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "reactstrap";
 import data from "./../data/jewelry.json";
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+  },
+  out: {
+    opacity: 0,
+  },
+};
 
 const StyledJewelry = styled.div`
   width: 100%;
@@ -34,8 +47,14 @@ const StyledJewelry = styled.div`
 
 const Jewelry = () => {
   return (
-    <StyledJewelry  className="bg">
-      <div className="product-cards">
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+    >
+      <StyledJewelry className="bg">
+        <div className="product-cards">
           <Row>
             {data.map((data) => (
               <Col xl={4} lg={4} md={6} s={12} xs={12}>
@@ -53,7 +72,8 @@ const Jewelry = () => {
             ))}
           </Row>
         </div>
-    </StyledJewelry>
+      </StyledJewelry>
+    </motion.div>
   );
 };
 

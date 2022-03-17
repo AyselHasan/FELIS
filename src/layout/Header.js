@@ -3,6 +3,30 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { VscMenu } from "react-icons/vsc";
 import { useMediaQuery } from "react-responsive";
+import { Menu, Dropdown } from "antd";
+
+const menu = (
+  <Menu>
+    <Menu.Item key="1">
+      <Link to="/jewelry">Jewelry</Link>
+    </Menu.Item>
+    <Menu.Item key="2">
+      <Link to="/shoes">Shoes</Link>
+    </Menu.Item>
+    <Menu.Item key="3">
+      <Link to="/bags">Bags</Link>
+    </Menu.Item>
+    <Menu.Item key="4" path="/sweaters">
+      <Link to="/sweaters">Sweaters</Link>
+    </Menu.Item>
+    <Menu.Item key="5">
+      <Link to="/eyewear">Eyewears</Link>
+    </Menu.Item>
+    <Menu.Item key="6">
+      <Link to="/shirts">Shirts</Link>
+    </Menu.Item>
+  </Menu>
+);
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -69,6 +93,13 @@ const Header = () => {
               onClick={() => window.location.replace("/#about")}
             >
               ABOUT
+            </li>
+            <li className="pointer">
+              <Dropdown overlay={menu}>
+                <a onClick={(e) => e.preventDefault()} className="black">
+                  COLLECTIONS
+                </a>
+              </Dropdown>
             </li>
           </ul>
         </div>
