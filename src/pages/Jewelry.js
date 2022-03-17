@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "reactstrap";
 import data from "./../data/jewelry.json";
-import { Pagination } from "antd";
-import Paginations from "../components/partials/Paginations";
 
 const StyledJewelry = styled.div`
   width: 100%;

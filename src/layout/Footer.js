@@ -41,6 +41,7 @@ const lists = [
   {id: 1, path: "/#products" , title: "COLLECTIONS"},
   {id: 2, path: "/#about" , title: "ABOUT US"},
   {id: 3, path: "/#contact" , title: "CONTACT US"},
+  {id: 3, path: "/faqs" , title: "FAQs"}
 ]
 
 const Footer = () => {

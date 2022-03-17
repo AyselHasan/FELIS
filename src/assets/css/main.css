@@ -51,6 +51,9 @@
 .font {
   font-family: "Playfair Display SC", serif;
 }
+.font-style{
+  font-family: 'Kanit', sans-serif;
+}
 .text-center{
   text-align: center;
 }
@@ -60,6 +63,18 @@
 .heading-large{
   font-size: 3rem
 }
+.heading-lmedium{
+  font-size: 1.6rem
+}
+.heading-medium{
+  font-size: 1.1rem
+}
 .pointer{
   cursor: pointer;
+}
+.p-2{
+  padding: 20px;
+}
+.yellow{
+  color:rgba(240, 174, 52, 0.7)
 }
