@@ -1,14 +1,19 @@
 import React from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { VscMenu } from "react-icons/vsc";
+import { FaHeart, FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
 import { Menu, Dropdown } from "antd";
+import "./../assets/css/header/header.css";
 
 const menu = (
   <Menu>
     <Menu.Item key="1">
-      <Link to="/jewelry">Jewelry</Link>
+      <div className="text-center">
+        <Link className="black" to="/jewelry">
+          Jewelry
+        </Link>
+      </div>
     </Menu.Item>
     <Menu.Item key="2">
       <Link to="/shoes">Shoes</Link>
@@ -20,7 +25,7 @@ const menu = (
       <Link to="/sweaters">Sweaters</Link>
     </Menu.Item>
     <Menu.Item key="5">
-      <Link to="/eyewear">Eyewears</Link>
+      <Link to="/eyewears">Eyewears</Link>
     </Menu.Item>
     <Menu.Item key="6">
       <Link to="/shirts">Shirts</Link>
@@ -28,51 +33,34 @@ const menu = (
   </Menu>
 );
 
-const StyledHeader = styled.div`
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(241, 234, 228, 255);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  z-index: 999;
-  .resp-header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-  .header {
-    width: 80%;
-    margin: 10px auto;
-  }
-  ul {
-    margin-top: 15px;
-  }
-  ul li {
-    font-size: 13px;
-  }
-  ul li:not(:first-child) {
-    margin-left: 20px;
-  }
-  span {
-    border: 1px solid black;
-    border-radius: 100%;
-    padding: 0 6px 2px 6px;
-    margin-left: 10px;
-  }
-  .link {
-    color: black;
-    text-decoration: none;
-  }
-`;
+const userMenu = (
+  <Menu>
+    <Menu.Item key="1">
+      <Link to="/login">
+        <div className="d-flex justify-center">
+          <button
+            onClick={() => window.location.replace("/login")}
+            className="userBtn btn"
+          >
+            Login
+          </button>
+        </div>
+      </Link>
+    </Menu.Item>
+    <Menu.Item key="2">
+      <Link to="/register">
+        <div className="d-flex justify-center">
+          <button className="userBtn btn">Register</button>
+        </div>
+      </Link>
+    </Menu.Item>
+  </Menu>
+);
 
 const Header = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
   return (
-    <StyledHeader>
+    <section id="header">
       <div
         className={
           isTabletOrMobile
@@ -84,21 +72,15 @@ const Header = () => {
           <ul className="list-unstyled d-flex bold">
             <li
               className="pointer"
-              onClick={() => window.location.replace("/#products")}
-            >
-              SHOP NOW
-            </li>
-            <li
-              className="pointer"
               onClick={() => window.location.replace("/#about")}
             >
               ABOUT
             </li>
             <li className="pointer">
               <Dropdown overlay={menu}>
-                <a onClick={(e) => e.preventDefault()} className="black">
-                  COLLECTIONS
-                </a>
+                <span onClick={(e) => e.preventDefault()} className="black">
+                  SHOP NOW
+                </span>
               </Dropdown>
             </li>
           </ul>
@@ -106,7 +88,7 @@ const Header = () => {
         <div className="logo">
           <h1 className="bold">
             <div
-              className="link pointer"
+              className="link pointer mt-2"
               to="/"
               onClick={() => window.location.replace("/#news")}
             >
@@ -115,15 +97,26 @@ const Header = () => {
           </h1>
         </div>
         <div>
-          <ul className="list-unstyled d-flex bold">
+          <ul className="icon-list list-unstyled d-flex bold">
             <li
               className="pointer"
               onClick={() => window.location.replace("/#favorites")}
             >
-              FAVORITES
+              <FaHeart />
+            </li>
+            <li>
+              <Dropdown overlay={userMenu}>
+                <FaUserAlt
+                  onClick={(e) => e.preventDefault()}
+                  className="black"
+                />
+              </Dropdown>
             </li>
             <li className="link">
-              CART <span>0</span>
+              <div class="cart">
+                <FaShoppingCart />
+                <span class="badge">2</span>
+              </div>
             </li>
           </ul>
         </div>
@@ -150,7 +143,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </StyledHeader>
+    </section>
   );
 };
 

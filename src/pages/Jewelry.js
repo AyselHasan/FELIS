@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import { Row, Col } from "reactstrap";
 import data from "./../data/jewelry.json";
 import { motion } from "framer-motion";
+import "./../assets/css/product/products.css"
 
 const pageVariants = {
   initial: {
@@ -16,35 +16,6 @@ const pageVariants = {
   },
 };
 
-const StyledJewelry = styled.div`
-  width: 100%;
-  padding: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .product-cards {
-    width: 80%;
-  }
-  .product-cards .product-card {
-    background-color: transparent;
-    border: 0;
-    padding: 15px;
-    margin-top: 30px;
-    position: relative;
-  }
-  .product-card img {
-    width: 100%;
-    height: 25vw;
-    object-fit: cover;
-  }
-  .add-product button {
-    border: 2px solid black;
-    border-radius: 0;
-    position: absolute;
-    bottom: 2px;
-  }
-`;
-
 const Jewelry = () => {
   return (
     <motion.div
@@ -53,8 +24,8 @@ const Jewelry = () => {
       exit="out"
       variants={pageVariants}
     >
-      <StyledJewelry className="bg">
-        <div className="product-cards">
+      <section id="products" className="bg">
+        <div className="product-cards center">
           <Row>
             {data.map((data) => (
               <Col xl={4} lg={4} md={6} s={12} xs={12}>
@@ -62,7 +33,7 @@ const Jewelry = () => {
                   <img className="product-photo" src={data.photo} />
                   <div className="card-body">
                     <h2 className="bold">{data.name}</h2>
-                    <h3 className="regular">{data.price}</h3>
+                    <h3 className="regular">{data.price}$</h3>
                     <div className="add-product">
                       <button className="btn">Add to card</button>
                     </div>
@@ -72,7 +43,7 @@ const Jewelry = () => {
             ))}
           </Row>
         </div>
-      </StyledJewelry>
+      </section>
     </motion.div>
   );
 };
